@@ -62,7 +62,7 @@ app.service('ProjectService', ['$http', function($http) {
         entry_name: '',
         project_id: '',
         date: '',
-        hours: ''
+        hours: 0
     };
 
     self.getEntries = function() {
@@ -79,7 +79,6 @@ app.service('ProjectService', ['$http', function($http) {
         })
     };
 
-
     self.getProjectId = function() {
         let selectedProject = document.getElementById('projectNameSelect');
         let val = selectedProject.options[selectedProject.selectedIndex].value;
@@ -87,8 +86,10 @@ app.service('ProjectService', ['$http', function($http) {
     };
 
     self.getDate = function() {
-        var entryDate = document.getElementById('entryDate').value;
-        self.newEntry.date = entryDate;
+        let dateArray = document.getElementById('entryDate').value.split('-');
+        let formattedDate = `${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`;
+        console.log(formattedDate);
+        self.newEntry.date = formattedDate;
     };
 
     self.postEntry = function() {
