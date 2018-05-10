@@ -8,6 +8,10 @@ app.config(function($routeProvider) {
         templateUrl: 'views/time-entry.html',
         controller: 'TimeEntryController as vm'
     })
+    .when('/projectmanager', {
+        templateUrl: 'views/project-manager.html',
+        controller: 'ProjectManagerController as vm'
+    })
     .otherwise({
         template: `<h2>404: Not Found</h2>`
     })
