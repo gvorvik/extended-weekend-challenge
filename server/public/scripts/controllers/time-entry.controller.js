@@ -2,6 +2,7 @@ app.controller('TimeEntryController', ['ProjectService', function(ProjectService
     console.log('Time Entry Controller Sourced');
     var self = this;
 
+    self.entries = ProjectService.entries;
     self.newEntry = ProjectService.newEntry;
     self.getEntries = ProjectService.getEntries;
     self.projects = ProjectService.projects;

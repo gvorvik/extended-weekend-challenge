@@ -20,7 +20,6 @@ app.service('ProjectService', ['$http', function($http) {
         })
         .then(function(results) {
             self.projects.projects = results.data;
-            console.log(self.projects);
         })
         .catch(function(error) {
             console.log(`error in get request ${error}`);
@@ -55,6 +54,9 @@ app.service('ProjectService', ['$http', function($http) {
     };
     
     //Time Entry Entries
+    self.entries = {
+        entries: []
+    };
 
     self.newEntry = {
         entry_name: '',
@@ -69,7 +71,8 @@ app.service('ProjectService', ['$http', function($http) {
             url: '/entries'
         })
         .then(function(results) {
-            console.log(results);
+            self.entries.entries = results.data
+            console.log(self.entries.entries);
         })
         .catch(function(error) {
             console.log(`error making get entries ${error}`)

@@ -23,12 +23,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr ng-repeat="entry in vm.entries.entries">
+            <th scope="row">{{entry.entry_name}}</th>
+            <td>{{entry.project_id}}</td>
+            <td>{{entry.date}}</td>
+            <td>{{entry.total_hours}}</td>
+            <td><button>Delete Entry</button></td>
         </tr>
     </tbody>
 </table>
