@@ -8,8 +8,9 @@ app.service('TimeEntryService', ['$http', function($http) {
     };
 
     self.newProject = {
-        name: '',
+        project_name: '',
         sqft: '',
+        total_hours: 0,
     };
 
     self.getProjects = function() {
@@ -37,6 +38,7 @@ app.service('TimeEntryService', ['$http', function($http) {
         })
         .then(function(results) {
             console.log(results);
+            self.getProjects();
         })
         .catch(function(error) {
             console.log(`error in get request ${error}`);

@@ -3,7 +3,7 @@
 <h3>Add Project</h3>
 
 <form>
-    <input type="text" placeholder="Project Name" ng-model="vm.newProject.name">
+    <input type="text" placeholder="Project Name" ng-model="vm.newProject.project_name">
     <input type="number" placeholder="Square Feet" ng-model = "vm.newProject.sqft">
     <input type="submit" ng-click="vm.postProject()">
 </form>
@@ -17,10 +17,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr ng-repeat="project in vm.projects.projects">
+            <td>{{project.project_name}}</td>
+            <td>{{project.sqft}} Square Feet</td>
+            <td>{{project.total_hours}} Hours</td>
         </tr>
     </tbody>
 </table>
