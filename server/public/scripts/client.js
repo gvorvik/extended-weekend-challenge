@@ -1,7 +1,14 @@
 console.log('clientJS sourced');
-var app = angular.module('TimeTrackerApp', []);
 
-app.controller('TimeController', ['$http', function($http) {
-    var self = this;
-    console.log('Time Controller Sourced');
-}]);
+var app = angular.module('TimeTrackerApp', ['ngRoute']);
+
+app.config(function($routeProvider) {
+    $routeProvider
+    .when('/', {
+        templateUrl: 'views/time-entry.html',
+        controller: 'TimeEntryController as vm'
+    })
+    .otherwise({
+        template: `<h2>404: Not Found</h2>`
+    })
+});

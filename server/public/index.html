@@ -7,9 +7,16 @@
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
     <script src="scripts/client.js"></script>
+    <script src="scripts/services/time-entry.service.js"></script>
+    <script src="scripts/controllers/time-entry.controller.js"></script>
     <title>Time Tracking Weekend Challenge</title>
 </head>
-<body ng-app="TimeTrackerApp" ng-controller="TimeController">
+<body ng-app="TimeTrackerApp">
     <h1>Time Tracker</h1>
+    
+    <!-- NG-View -->
+    <ng-view>
+
+    </ng-view>
 </body>
 </html>
