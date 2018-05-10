@@ -8,8 +8,8 @@ app.service('TimeEntryService', ['$http', function($http) {
     };
 
     self.newProject = {
-        name: 'test',
-        sqft: 0,
+        name: '',
+        sqft: '',
     };
 
     self.getProjects = function() {
@@ -19,7 +19,8 @@ app.service('TimeEntryService', ['$http', function($http) {
             url: '/projects'
         })
         .then(function(results) {
-            console.log(results);
+            self.projects.projects = results.data;
+            console.log(self.projects);
         })
         .catch(function(error) {
             console.log(`error in get request ${error}`);
@@ -27,7 +28,8 @@ app.service('TimeEntryService', ['$http', function($http) {
     };
 
     self.postProject = function() {
-        console.log('button clicked');
+        console.log(self.newProject);
+        
         $http({
             method: 'POST',
             url: '/projects',

@@ -3,9 +3,8 @@
 <h3>Add Project</h3>
 
 <form>
-    <input type="text" placeholder="Project Name">
-    <input type="number" placeholder="Square Feet">
-    <input type="number" placeholder="Total Hours">
+    <input type="text" placeholder="Project Name" ng-model="vm.newProject.name">
+    <input type="number" placeholder="Square Feet" ng-model = "vm.newProject.sqft">
     <input type="submit" ng-click="vm.postProject()">
 </form>
 
