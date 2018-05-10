@@ -4,9 +4,7 @@
     <h3>Add Time Entry</h3>
     <input type="text" placeholder="What did you do?">
     <select name="projectName" id="projectNameSelect">
-        <option value="project1">Project 1</option>
-        <option value="project2">Project 2</option>
-        <option value="project3">Project 3</option>
+        <option ng-repeat="project in vm.projects.projects" value="project.project_name">{{project.project_name}}</option>
     </select>
     <input type="date" name="projectDate">
     <input type="text" placeholder="Start Time">

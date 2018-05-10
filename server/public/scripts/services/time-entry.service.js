@@ -45,4 +45,5 @@ app.service('TimeEntryService', ['$http', function($http) {
         });
     };
     
+    //Time Entry Entries
 }]);
