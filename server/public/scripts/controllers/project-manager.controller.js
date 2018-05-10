@@ -6,6 +6,7 @@ app.controller('ProjectManagerController', ['ProjectService', function(ProjectSe
     self.newProject = ProjectService.newProject;
     self.getProjects = ProjectService.getProjects;
     self.postProject = ProjectService.postProject;
+    self.deleteProject = ProjectService.deleteProject;
 
     self.getProjects();
 

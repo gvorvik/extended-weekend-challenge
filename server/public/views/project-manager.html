@@ -22,7 +22,7 @@
             <th scope="row">{{project.project_name}}</th>
             <td>{{project.sqft}} Square Feet</td>
             <td>{{project.total_hours}} Hours</td>
-            <td><button>Delete</button></td>
+            <td><button ng-click="vm.deleteProject(project.id)">Delete</button></td>
         </tr>
     </tbody>
 </table>

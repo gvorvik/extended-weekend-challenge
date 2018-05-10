@@ -14,7 +14,6 @@ app.service('ProjectService', ['$http', function($http) {
     };
 
     self.getProjects = function() {
-        console.log('button clicked');
         $http({
             method: 'GET',
             url: '/projects'
@@ -29,19 +28,29 @@ app.service('ProjectService', ['$http', function($http) {
     };
 
     self.postProject = function() {
-        console.log(self.newProject);
-        
         $http({
             method: 'POST',
             url: '/projects',
             data: self.newProject
         })
         .then(function(results) {
-            console.log(results);
             self.getProjects();
         })
         .catch(function(error) {
             console.log(`error in get request ${error}`);
+        });
+    };
+
+    self.deleteProject = function(id) {
+        $http({
+            method: 'DELETE',
+            url: `/projects/${id}`
+        })
+        .then(function(response) {
+            self.getProjects();
+        })
+        .catch(function(error) {
+            console.log(`Error with delete request, ${error}`);
         });
     };
     
