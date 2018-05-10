@@ -63,6 +63,20 @@ app.service('ProjectService', ['$http', function($http) {
         hours: ''
     };
 
+    self.getEntries = function() {
+        $http({
+            method: 'GET',
+            url: '/entries'
+        })
+        .then(function(results) {
+            console.log(results);
+        })
+        .catch(function(error) {
+            console.log(`error making get entries ${error}`)
+        })
+    };
+
+
     self.getProjectId = function() {
         let selectedProject = document.getElementById('projectNameSelect');
         let val = selectedProject.options[selectedProject.selectedIndex].value;
@@ -86,8 +100,6 @@ app.service('ProjectService', ['$http', function($http) {
 
     // };
 
-    // self.getEntries() {
-
-    // };
+  
     
 }]);

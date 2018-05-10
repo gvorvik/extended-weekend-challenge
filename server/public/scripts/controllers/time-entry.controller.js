@@ -3,6 +3,7 @@ app.controller('TimeEntryController', ['ProjectService', function(ProjectService
     var self = this;
 
     self.newEntry = ProjectService.newEntry;
+    self.getEntries = ProjectService.getEntries;
     self.projects = ProjectService.projects;
     self.getProjects = ProjectService.getProjects;
     self.getProjectId = ProjectService.getProjectId; 
@@ -11,4 +12,5 @@ app.controller('TimeEntryController', ['ProjectService', function(ProjectService
 
 
     self.getProjects();
+    self.getEntries();
 }]);
