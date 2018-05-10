@@ -6,10 +6,10 @@
     <select name="projectName" id="projectNameSelect">
         <option ng-repeat="project in vm.projects.projects" value="{{project.id}}">{{project.project_name}}</option>
     </select>
-    <input type="date" name="projectDate" ng-model="vm.newEntry.date">
+    <input type="date" name="entryDate" id="entryDate">
     <input type="time" placeholder="Start Time">
     <input type="time" placeholder="End Time">
-    <input type="submit" ng-click="vm.logIt()">
+    <input type="submit" ng-click="vm.postEntry()">
 </form>
 
 <table>

@@ -56,13 +56,37 @@ app.service('ProjectService', ['$http', function($http) {
     
     //Time Entry Entries
 
-    // self.newEntry = {
-    //     entry_name: '',
-    //     project_id: '',
-    //     date: '',
-    // }
+    self.newEntry = {
+        entry_name: '',
+        project_id: '',
+        date: '',
+        hours: ''
+    };
+
+    self.getProjectId = function() {
+        let selectedProject = document.getElementById('projectNameSelect');
+        let val = selectedProject.options[selectedProject.selectedIndex].value;
+        self.newEntry.project_id = Number(val);   
+    };
+
+    self.getDate = function() {
+        var entryDate = document.getElementById('entryDate').value;
+        self.newEntry.date = entryDate;
+    };
+
+    self.postEntry = function() {
+        self.getProjectId();
+        self.getDate();
+        console.log(self.newEntry);        
+    };
+
+
 
     // self.calculateHours = function() {
+
+    // };
+
+    // self.getEntries() {
 
     // };
     
