@@ -88,14 +88,27 @@ app.service('ProjectService', ['$http', function($http) {
     self.getDate = function() {
         let dateArray = document.getElementById('entryDate').value.split('-');
         let formattedDate = `${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`;
-        console.log(formattedDate);
+        console.log(dateArray);
         self.newEntry.date = formattedDate;
     };
 
     self.postEntry = function() {
         self.getProjectId();
         self.getDate();
-        console.log(self.newEntry);        
+        console.log(self.newEntry);
+        
+        $http({
+            method: 'POST',
+            url: '/entries',
+            data: self.newEntry
+        })
+        .then(function(results) {
+            self.getEntries();
+            console.log(results);
+        })
+        .catch(function(error) {
+            console.log(`error making post entry ${error}`)
+        });       
     };
 
 
