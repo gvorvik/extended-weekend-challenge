@@ -2,7 +2,7 @@ app.service('ProjectService', ['$http', function($http) {
     console.log('Project Service... Hello!');
     var self = this;
 
-    // Project View Entries
+    // PROJECT FUNCTIONS
     self.projects = {
         projects: []
     };
@@ -53,7 +53,7 @@ app.service('ProjectService', ['$http', function($http) {
         });
     };
     
-    //Time Entry Entries
+    //ENTRY FUNCTIONS
     self.entries = {
         entries: []
     };
@@ -62,6 +62,8 @@ app.service('ProjectService', ['$http', function($http) {
         entry_name: '',
         project_id: '',
         date: '',
+        start: '',
+        end: '',
         hours: 0
     };
 
@@ -71,8 +73,7 @@ app.service('ProjectService', ['$http', function($http) {
             url: '/entries'
         })
         .then(function(results) {
-            self.entries.entries = results.data
-            console.log(self.entries.entries);
+            self.entries.entries = results.data;
         })
         .catch(function(error) {
             console.log(`error making get entries ${error}`)
@@ -88,13 +89,14 @@ app.service('ProjectService', ['$http', function($http) {
     self.getDate = function() {
         let dateArray = document.getElementById('entryDate').value.split('-');
         let formattedDate = `${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`;
-        console.log(dateArray);
         self.newEntry.date = formattedDate;
     };
 
     self.postEntry = function() {
         self.getProjectId();
         self.getDate();
+        self.newEntry.start = document.getElementById('startTime').value;
+        self.newEntry.end = document.getElementById('endTime').value;
         console.log(self.newEntry);
         
         $http({
@@ -124,13 +126,5 @@ app.service('ProjectService', ['$http', function($http) {
             console.log(`Error with delete request, ${error}`);
         });
     };
-
-
-
-    // self.calculateHours = function() {
-
-    // };
-
-  
     
 }]);
