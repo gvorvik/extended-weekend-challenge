@@ -2,14 +2,14 @@
 
 <form>
     <h3>Add Time Entry</h3>
-    <input type="text" placeholder="What did you do?">
+    <input type="text" placeholder="What did you do?" ng-model="vm.newEntry.entry_name">
     <select name="projectName" id="projectNameSelect">
-        <option ng-repeat="project in vm.projects.projects" value="project.project_name">{{project.project_name}}</option>
+        <option ng-repeat="project in vm.projects.projects" value="{{project.id}}">{{project.project_name}}</option>
     </select>
-    <input type="date" name="projectDate">
-    <input type="text" placeholder="Start Time">
-    <input type="text" placeholder="End Time">
-    <input type="submit">
+    <input type="date" name="projectDate" ng-model="vm.newEntry.date">
+    <input type="time" placeholder="Start Time">
+    <input type="time" placeholder="End Time">
+    <input type="submit" ng-click="vm.logIt()">
 </form>
 
 <table>

@@ -56,5 +56,14 @@ app.service('ProjectService', ['$http', function($http) {
     
     //Time Entry Entries
 
+    // self.newEntry = {
+    //     entry_name: '',
+    //     project_id: '',
+    //     date: '',
+    // }
+
+    // self.calculateHours = function() {
+
+    // };
     
 }]);
