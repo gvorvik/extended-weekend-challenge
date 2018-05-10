@@ -28,4 +28,16 @@ router.post('/', (req, res) => {
     }
 );
 
+router.delete('/:id', (req, res) => {
+    const idToDelete = req.params.id;
+    const queryText = 'DELETE FROM "entries" WHERE "id" = $1';
+    pool.query(queryText, [idToDelete])
+    .then((response) => {
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;

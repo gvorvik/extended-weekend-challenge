@@ -10,6 +10,7 @@ app.controller('TimeEntryController', ['ProjectService', function(ProjectService
     self.getProjectId = ProjectService.getProjectId; 
     self.getDate = ProjectService.getDate;
     self.postEntry = ProjectService.postEntry;
+    self.deleteEntry = ProjectService.deleteEntry;
 
 
     self.getProjects();

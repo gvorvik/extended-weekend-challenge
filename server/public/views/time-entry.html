@@ -2,11 +2,11 @@
 
 <form>
     <h3>Add Time Entry</h3>
-    <input type="text" placeholder="What did you do?" ng-model="vm.newEntry.entry_name">
-    <select name="projectName" id="projectNameSelect">
+    <input type="text" placeholder="What did you do?" ng-model="vm.newEntry.entry_name" required>
+    <select name="projectName" id="projectNameSelect" required>
         <option ng-repeat="project in vm.projects.projects" value="{{project.id}}">{{project.project_name}}</option>
     </select>
-    <input type="date" name="entryDate" id="entryDate">
+    <input type="date" name="entryDate" id="entryDate" required>
     <label for="startTime">Start Time</label>
     <input type="time" id="startTime" placeholder="Start Time">
     <label for="endTime">End Time</label>
@@ -30,7 +30,7 @@
             <td>{{entry.project_id}}</td>
             <td>{{entry.date}}</td>
             <td>{{entry.total_hours}}</td>
-            <td><button>Delete Entry</button></td>
+            <td><button ng-click="vm.deleteEntry(entry.id)">Delete Entry</button></td>
         </tr>
     </tbody>
 </table>

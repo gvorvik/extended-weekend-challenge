@@ -111,6 +111,20 @@ app.service('ProjectService', ['$http', function($http) {
         });       
     };
 
+    self.deleteEntry = function(id) {
+        console.log('delete button click', id);
+        $http({
+            method: 'DELETE',
+            url: `/entries/${id}`
+        })
+        .then(function(response) {
+            self.getEntries();
+        })
+        .catch(function(error) {
+            console.log(`Error with delete request, ${error}`);
+        });
+    };
+
 
 
     // self.calculateHours = function() {
