@@ -1,9 +1,9 @@
-app.controller('TimeEntryController', ['TimeEntryService', function(TimeEntryService) {
+app.controller('TimeEntryController', ['ProjectService', function(ProjectService) {
     console.log('Time Entry Controller Sourced');
     var self = this;
 
-    this.projects = TimeEntryService.projects;
-    this.getProjects = TimeEntryService.getProjects;
+    this.projects = ProjectService.projects;
+    this.getProjects = ProjectService.getProjects;
 
     this.getProjects();
 }]);

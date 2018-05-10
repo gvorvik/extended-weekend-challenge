@@ -1,5 +1,5 @@
-app.service('TimeEntryService', ['$http', function($http) {
-    console.log('Time Entry Service... Hello!');
+app.service('ProjectService', ['$http', function($http) {
+    console.log('Project Service... Hello!');
     var self = this;
 
     // Project View Entries
@@ -46,4 +46,6 @@ app.service('TimeEntryService', ['$http', function($http) {
     };
     
     //Time Entry Entries
+
+    
 }]);

@@ -11,16 +11,18 @@
 <table>
     <thead>
         <tr>
-            <th>Project</th>
-            <th>Square Feet</th>
-            <th>Total Hours</th>
+            <th scope="col">Project</th>
+            <th scope="col">Square Feet</th>
+            <th scope="col">Total Hours</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="project in vm.projects.projects">
-            <td>{{project.project_name}}</td>
+            <th scope="row">{{project.project_name}}</th>
             <td>{{project.sqft}} Square Feet</td>
             <td>{{project.total_hours}} Hours</td>
+            <td><button>Delete</button></td>
         </tr>
     </tbody>
 </table>

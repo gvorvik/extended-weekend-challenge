@@ -1,11 +1,11 @@
-app.controller('ProjectManagerController', ['TimeEntryService', function(TimeEntryService) {
+app.controller('ProjectManagerController', ['ProjectService', function(ProjectService) {
     console.log('Project Manager Controller Sourced');
     var self = this;
 
-    self.projects = TimeEntryService.projects;
-    self.newProject = TimeEntryService.newProject;
-    self.getProjects = TimeEntryService.getProjects;
-    self.postProject = TimeEntryService.postProject;
+    self.projects = ProjectService.projects;
+    self.newProject = ProjectService.newProject;
+    self.getProjects = ProjectService.getProjects;
+    self.postProject = ProjectService.postProject;
 
     self.getProjects();
 
