@@ -2,4 +2,27 @@
 
 <h3>Add Project</h3>
 
-<input type="text" placeholder="Project Name">
+<form>
+    <input type="text" placeholder="Project Name">
+    <input type="number" placeholder="Square Feet">
+    <input type="number" placeholder="Total Hours">
+    <input type="submit" ng-click="vm.postProject()">
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Project</th>
+            <th>Square Feet</th>
+            <th>Total Hours</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
