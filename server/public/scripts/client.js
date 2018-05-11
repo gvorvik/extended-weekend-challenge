@@ -1,6 +1,6 @@
 console.log('clientJS sourced');
 
-var app = angular.module('TimeTrackerApp', ['ngRoute']);
+var app = angular.module('TimeTrackerApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 
 app.config(function($routeProvider) {
     $routeProvider

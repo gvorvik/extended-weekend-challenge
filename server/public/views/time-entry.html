@@ -2,7 +2,9 @@
 
 <form>
     <h3>Add Time Entry</h3>
-    <input type="text" placeholder="What did you do?" ng-model="vm.newEntry.entry_name" required>
+    <md-input-container>
+        <input type="text" placeholder="What did you do?" ng-model="vm.newEntry.entry_name" required>
+    </md-input-container>
     <select name="projectName" id="projectNameSelect" required>
         <option ng-repeat="project in vm.projects.projects" value="{{project.id}}">{{project.project_name}}</option>
     </select>
@@ -14,7 +16,7 @@
     <input type="submit" ng-click="vm.postEntry()">
 </form>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <th scope="col">Entry</th>
@@ -30,7 +32,9 @@
             <td>{{entry.project_id}}</td>
             <td>{{entry.date}}</td>
             <td>{{entry.total_hours}}</td>
-            <td><button ng-click="vm.deleteEntry(entry.id)">Delete Entry</button></td>
+            <td>
+                <md-button class="md-raised md-warn" ng-click="vm.deleteEntry(entry.id)">Delete Entry</md-button>
+            </td>
         </tr>
     </tbody>
 </table>

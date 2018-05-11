@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,17 +23,24 @@
 
     <title>Orvik House Renovation</title>
     <link rel="stylesheet" href="vendors/angular-material.min.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 
 <body ng-app="TimeTrackerApp">
-    <h1>Time Tracker</h1>
-    <a href="#!/">Time Entry</a>
-    <a href="#!/projectmanager">Manage Projects</a>
+    <md-nav-bar md-no-ink-bar="disableInkBar" md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-href="#!/" name="Entries Page">
+            Entries
+        </md-nav-item>
+        <md-nav-item md-nav-href="#!/projectmanager" name="Projects Page">
+            Projects
+        </md-nav-item>
+    </md-nav-bar>
 
     <!-- NG-View -->
     <ng-view>
 
     </ng-view>
 </body>
+
 </html>
