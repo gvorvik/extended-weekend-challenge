@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
     pool.query(queryText, [entryToAdd.entry_name, entryToAdd.date,
     entryToAdd.hours, entryToAdd.project_id])
         .then((response) => {
-            setHours();
+            getTotalHours();
             res.sendStatus(200);
         })
         .catch((error) => {
@@ -59,17 +59,35 @@ function calcHours(start, end) {
     return hoursWorked;
 };
 
-function setHours() {
+//function to return total hours per project
+function getTotalHours() {
     pool.query(`SELECT "projects"."id", SUM("entries"."total_hours") FROM "projects"
     JOIN "entries" ON "projects"."id"="entries"."project_id"
     GROUP BY "projects"."id";`)
-    .then((results) => {
-        console.log(results.rows);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
+        .then((results) => {
+            let totalHours = results.rows;
+            setTotalHours(totalHours);
+        })
+        .catch((error) => {
+            console.log('error on get total hours', error);
+        });
 }
+
+//function to set total hours worked on each project
+function setTotalHours(array) {
+    
+    array.forEach((obj) => {
+        pool.query(`UPDATE "projects" SET "total_hours" = $1
+        WHERE "id" = $2;`, [obj.sum, obj.id])
+            .then((results) => {
+                console.log('A OK');
+            })
+            .catch((error) => {
+                console.log('error on set total hours', error);
+            });
+    });
+};
+
 
 
 module.exports = router;
