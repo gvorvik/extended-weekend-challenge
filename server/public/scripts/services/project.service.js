@@ -106,7 +106,6 @@ app.service('ProjectService', ['$http', function($http) {
         })
         .then(function(results) {
             self.getEntries();
-            console.log(results);
         })
         .catch(function(error) {
             console.log(`error making post entry ${error}`)
@@ -126,5 +125,6 @@ app.service('ProjectService', ['$http', function($http) {
             console.log(`Error with delete request, ${error}`);
         });
     };
+
     
 }]);
