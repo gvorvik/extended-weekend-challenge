@@ -61,7 +61,7 @@ app.service('ProjectService', ['$http', function ($http, $mdDialog) {
     self.newEntry = {
         entry_name: '',
         project_id: '',
-        date: '',
+        date: new Date(),
         start: '',
         end: '',
         hours: 0
@@ -87,43 +87,30 @@ app.service('ProjectService', ['$http', function ($http, $mdDialog) {
         self.newEntry.project_id = Number(val);
     };
 
-    self.getDate = function () {
-        let dateArray = document.getElementById('entryDate').value.split('-');
-        let formattedDate = `${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`;
-        self.newEntry.date = formattedDate;
-    };
+    // self.getDate = function () {
+    //     let dateArray = document.getElementById('entryDate').value.split('-');
+    //     let formattedDate = `${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`;
+    //     self.newEntry.date = formattedDate;
+    // };
 
     self.postEntry = function () {
-        if (self.newEntry.entry_name === '') {
-            $mdDialog.show(
-                $mdDialog.alert()
-                    .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
-                    .title('This is an alert title')
-                    .textContent('You can specify some description text in here.')
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('Got it!')
-                    .targetEvent(ev)
-            );
-        } else {
-            self.getProjectId();
-            self.getDate();
-            self.newEntry.start = document.getElementById('startTime').value;
-            self.newEntry.end = document.getElementById('endTime').value;
-            console.log(self.newEntry);
+        self.getProjectId();
+        
+        self.newEntry.start = document.getElementById('startTime').value;
+        self.newEntry.end = document.getElementById('endTime').value;
+        console.log(self.newEntry);
 
-            $http({
-                method: 'POST',
-                url: '/entries',
-                data: self.newEntry
+        $http({
+            method: 'POST',
+            url: '/entries',
+            data: self.newEntry
+        })
+            .then(function (results) {
+                self.getEntries();
             })
-                .then(function (results) {
-                    self.getEntries();
-                })
-                .catch(function (error) {
-                    console.log(`error making post entry ${error}`)
-                });
-        }
+            .catch(function (error) {
+                console.log(`error making post entry ${error}`)
+            });
     };
 
     self.deleteEntry = function (id) {
