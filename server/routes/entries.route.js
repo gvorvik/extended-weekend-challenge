@@ -38,6 +38,7 @@ router.delete('/:id', (req, res) => {
     const queryText = 'DELETE FROM "entries" WHERE "id" = $1';
     pool.query(queryText, [idToDelete])
         .then((response) => {
+            getTotalHours();
             res.sendStatus(200);
         })
         .catch((error) => {
@@ -75,7 +76,6 @@ function getTotalHours() {
 
 //function to set total hours worked on each project
 function setTotalHours(array) {
-    
     array.forEach((obj) => {
         pool.query(`UPDATE "projects" SET "total_hours" = $1
         WHERE "id" = $2;`, [obj.sum, obj.id])
