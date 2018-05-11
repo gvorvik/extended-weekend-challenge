@@ -15,3 +15,9 @@ CREATE TABLE "entries"(
 	"total_hours" INT NOT NULL,
 	"project_id" INT REFERENCES "projects" ON DELETE CASCADE NOT NULL
 );
+
+The query to add up hours per project:
+
+SELECT "projects"."id", SUM("entries"."total_hours") FROM "projects"
+JOIN "entries" ON "projects"."id"="entries"."project_id"
+GROUP BY "projects"."id";
