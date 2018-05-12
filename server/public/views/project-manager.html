@@ -14,16 +14,16 @@
 
 <md-table-container>
     <table md-table>
-        <thead md-head>
+        <thead md-head md-order="myOrder">
             <tr md-row>
-                <th md-column scope="col">Project</th>
-                <th md-column scope="col">Square Feet</th>
-                <th md-column scope="col">Total Hours</th>
-                <th md-column scope="col">Delete</th>
+                <th md-column md-order-by="project_name">Project</th>
+                <th md-column md-numeric md-order-by="project_name">Square Feet</th>
+                <th md-column>Total Hours</th>
+                <th md-column>Delete</th>
             </tr>
         </thead>
         <tbody md-body>
-            <tr md-row ng-repeat="project in vm.projects.projects">
+            <tr md-row ng-repeat="project in vm.projects.projects | orderBy: myOrder"">
                 <td md-cell>{{project.project_name}}</td>
                 <td md-cell>{{project.sqft}} Square Feet</td>
                 <td md-cell>{{project.total_hours}} Hours</td>
