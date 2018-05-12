@@ -31,20 +31,19 @@
     </md-container>
 </form>
 
-
 <md-table-container>
     <table md-table>
-        <thead md-head>
+        <thead md-head md-order="myOrder">
             <tr md-row>
-                <th md-column>Entry</th>
-                <th md-column md-numeric>Project ID</th>
-                <th md-column>Date</th>
+                <th md-column md-order-by="entry_name">Entry</th>
+                <th md-column md-numeric md-order-by="project_id">Project ID</th>
+                <th md-column md-order-by="date">Date</th>
                 <th md-column>Hours</th>
                 <th md-column>Delete</th>
             </tr>
         </thead>
         <tbody md-body>
-            <tr md-row md-select="entry" ng-repeat="entry in vm.entries.entries">
+            <tr md-row md-select="entry" ng-repeat="entry in vm.entries.entries | orderBy: myOrder">
                 <td md-cell>{{entry.entry_name}}</td>
                 <td md-cell>{{entry.project_id}}</td>
                 <td md-cell>{{entry.date | date: "MM/dd/yyyy"}}</td>
