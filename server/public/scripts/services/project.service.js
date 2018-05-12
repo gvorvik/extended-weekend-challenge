@@ -81,21 +81,8 @@ app.service('ProjectService', ['$http', function ($http, $mdDialog) {
             })
     };
 
-    self.getProjectId = function () {
-        let selectedProject = document.getElementById('projectNameSelect');
-        let val = selectedProject.options[selectedProject.selectedIndex].value;
-        self.newEntry.project_id = Number(val);
-    };
 
-    // self.getDate = function () {
-    //     let dateArray = document.getElementById('entryDate').value.split('-');
-    //     let formattedDate = `${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`;
-    //     self.newEntry.date = formattedDate;
-    // };
-
-    self.postEntry = function () {
-        self.getProjectId();
-        
+    self.postEntry = function () {     
         self.newEntry.start = document.getElementById('startTime').value;
         self.newEntry.end = document.getElementById('endTime').value;
         console.log(self.newEntry);
@@ -128,3 +115,19 @@ app.service('ProjectService', ['$http', function ($http, $mdDialog) {
     };
 
 }]);
+
+
+
+// Functions Previously Used But No Longer Needed
+
+    // self.getProjectId = function () {
+    //     let selectedProject = document.getElementById('projectNameSelect');
+    //     let val = selectedProject.options[selectedProject.selectedIndex].value;
+    //     self.newEntry.project_id = Number(val);
+    // };
+
+    // self.getDate = function () {
+    //     let dateArray = document.getElementById('entryDate').value.split('-');
+    //     let formattedDate = `${dateArray[1]}/${dateArray[2]}/${dateArray[0]}`;
+    //     self.newEntry.date = formattedDate;
+    // };

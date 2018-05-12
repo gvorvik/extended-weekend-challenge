@@ -3,17 +3,20 @@
 <form>
     <md-container layout="column" layout-align="center center">
 
-            <md-input-container >
-                <input type="text" placeholder="What did you do?" ng-model="vm.newEntry.entry_name" required>
-            </md-input-container>
-            <md-divider>
-            <select name="projectName" id="projectNameSelect" required>
-                <option ng-repeat="project in vm.projects.projects" value="{{project.id}}">{{project.project_name}}</option>
-            </select>
+        <md-input-container>
+            <input type="text" placeholder="What did you do?" ng-model="vm.newEntry.entry_name" required>
+        </md-input-container>
+        <md-divider>
             <md-input-container>
-                <md-datepicker ng-model="vm.newEntry.date.format" md-placeholder="Enter date"></md-datepicker>
+                <md-select ng-model="vm.newEntry.project_id" placeholder="Select Project" name="projectName" id="projectNameSelect" required>
+                    <md-option ng-repeat="project in vm.projects.projects" value="{{project.id}}">{{project.project_name}}</md-option>
+                </md-select>
             </md-input-container>
-
+            <md-input-container>
+                <md-datepicker ng-model="vm.newEntry.date" md-placeholder="Enter date"></md-datepicker>
+            </md-input-container>
+        </md-divider>
+        <md-divider>
             <md-input-container>
                 <label for="startTime">Start Time</label>
                 <input type="time" id="startTime" placeholder="Start Time">
