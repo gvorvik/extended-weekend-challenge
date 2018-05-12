@@ -67,7 +67,6 @@ app.service('ProjectService', ['$http', function ($http, $mdDialog) {
         hours: 0
     };
 
-
     self.getEntries = function () {
         $http({
             method: 'GET',
@@ -80,7 +79,6 @@ app.service('ProjectService', ['$http', function ($http, $mdDialog) {
                 console.log(`error making get entries ${error}`)
             })
     };
-
 
     self.postEntry = function () {     
         self.newEntry.start = document.getElementById('startTime').value;
