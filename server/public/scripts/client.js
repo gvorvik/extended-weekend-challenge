@@ -1,18 +1,18 @@
 console.log('clientJS sourced');
 
-var app = angular.module('TimeTrackerApp', ['ngRoute']);
+var app = angular.module('TimeTrackerApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'md.data.table']);
 
-app.config(function($routeProvider) {
+app.config(function ($routeProvider) {
     $routeProvider
-    .when('/', {
-        templateUrl: 'views/time-entry.html',
-        controller: 'TimeEntryController as vm'
-    })
-    .when('/projectmanager', {
-        templateUrl: 'views/project-manager.html',
-        controller: 'ProjectManagerController as vm'
-    })
-    .otherwise({
-        template: `<h2>404: Not Found</h2>`
-    });
+        .when('/', {
+            templateUrl: 'views/project-manager.html',
+            controller: 'ProjectManagerController as vm'
+        })
+        .when('/entries', {
+            templateUrl: 'views/time-entry.html',
+            controller: 'TimeEntryController as vm'
+        })
+        .otherwise({
+            template: `<h2>404: Not Found</h2>`
+        });
 });

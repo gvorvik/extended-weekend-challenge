@@ -1,29 +1,36 @@
-<h2>Project Manager</h2>
-
-<h3>Add Project</h3>
+<h1 layout-align="center center" class="md-display-3">Project Manager</h1>
 
 <form>
-    <input type="text" placeholder="Project Name" ng-model="vm.newProject.project_name">
-    <input type="number" placeholder="Square Feet" ng-model = "vm.newProject.sqft">
-    <input type="submit" ng-click="vm.postProject()">
+    <md-container layout="column" layout-align="center center">
+        <md-input-container>
+            <input class="formInput" type="text" placeholder="Project Name" ng-model="vm.newProject.project_name">
+        </md-input-container>
+        <md-input-container>
+            <input class="formInput" type="number" placeholder="Square Feet" ng-model="vm.newProject.sqft">
+        </md-input-container>
+        <md-button class="md-raised md-primary" type="submit" ng-click="vm.postProject()">Add Project</md-button>
+    </md-container>
 </form>
 
-<table>
-    <thead>
-        <tr>
-            <th scope="col">Project</th>
-            <th scope="col">Square Feet</th>
-            <th scope="col">Total Hours</th>
-            <th scope="col">Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="project in vm.projects.projects">
-            <th scope="row">{{project.project_name}}</th>
-            <td>{{project.sqft}} Square Feet</td>
-            <td>{{project.total_hours}} Hours</td>
-            <td><button ng-click="vm.deleteProject(project.id)">Delete</button></td>
-        </tr>
-    </tbody>
-</table>
-
+<md-table-container>
+    <table md-table>
+        <thead md-head>
+            <tr md-row>
+                <th md-column scope="col">Project</th>
+                <th md-column scope="col">Square Feet</th>
+                <th md-column scope="col">Total Hours</th>
+                <th md-column scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody md-body>
+            <tr md-row ng-repeat="project in vm.projects.projects">
+                <td md-cell>{{project.project_name}}</td>
+                <td md-cell>{{project.sqft}} Square Feet</td>
+                <td md-cell>{{project.total_hours}} Hours</td>
+                <td md-cell>
+                    <md-button class="md-raised md-warn" ng-click="vm.deleteProject(project.id)">Delete</md-button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</md-table-container>
