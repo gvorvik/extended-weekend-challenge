@@ -1,4 +1,4 @@
-app.controller('TimeEntryController', ['ProjectService', function(ProjectService) {
+app.controller('TimeEntryController', ['ProjectService', '$mdDialog', function(ProjectService, $mdDialog) {
     console.log('Time Entry Controller Sourced');
     var self = this;
 
@@ -11,6 +11,19 @@ app.controller('TimeEntryController', ['ProjectService', function(ProjectService
     self.getDate = ProjectService.getDate;
     self.postEntry = ProjectService.postEntry;
     self.deleteEntry = ProjectService.deleteEntry;
+
+    self.removeEntry = function(entry) {
+        var confirm = $mdDialog.confirm()
+            .title(`Are you sure you want to delete this entry?`)
+            .ok(`Delete Entry`)
+            .cancel(`Don't Delete Entry`);
+        
+        $mdDialog.show(confirm).then(function() {
+            self.deleteEntry(entry.id);
+        }, function() {
+            console.log('Delete Cancelled');
+        });
+    };
 
     self.getProjects();
     self.getEntries();
