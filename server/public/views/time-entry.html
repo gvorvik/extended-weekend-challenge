@@ -49,7 +49,7 @@
                 <td md-cell>{{entry.date | date: "MM/dd/yyyy"}}</td>
                 <td md-cell>{{entry.total_hours}}</td>
                 <td md-cell>
-                    <md-button class="md-raised md-warn" ng-click="vm.deleteEntry(entry.id)">Delete Entry</md-button>
+                    <md-button class="md-raised md-warn" ng-click="vm.removeEntry(entry)">Delete Entry</md-button>
                 </td>
             </tr>
         </tbody>

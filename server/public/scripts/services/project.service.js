@@ -1,4 +1,4 @@
-app.service('ProjectService', ['$http', function ($http, $mdDialog) {
+app.service('ProjectService', ['$http', function ($http) {
     console.log('Project Service... Hello!');
     var self = this;
 
@@ -99,7 +99,6 @@ app.service('ProjectService', ['$http', function ($http, $mdDialog) {
     };
 
     self.deleteEntry = function (id) {
-        console.log('delete button click', id);
         $http({
             method: 'DELETE',
             url: `/entries/${id}`
@@ -111,6 +110,7 @@ app.service('ProjectService', ['$http', function ($http, $mdDialog) {
                 console.log(`Error with delete request, ${error}`);
             });
     };
+
 
 }]);
 
